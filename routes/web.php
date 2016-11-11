@@ -13,7 +13,6 @@ Route::get('redirect', 'SocialLoginController@redirectToProvider');
 Route::get('auth/facebook/callback', 'SocialLoginController@handleProviderCallback');
 //==========================================================
 
-
 /**
  * Topics
  */
@@ -22,12 +21,10 @@ Route::get('topics/{topic}/show', 'TopicsController@show');
 Route::get('topics/create', 'TopicsController@create');
 Route::post('topics/create', 'TopicsController@store');
 
-
 /**
  * Comments
  */
 Route::post('comments/{topic}', 'CommentsController@store');
-
 
 /**
  * Likes
@@ -39,3 +36,9 @@ Route::post('liked/comments/{comment}', 'LikesController@likedComment');
  * Categories
  */
 Route::resource('category', 'CategoryController');
+
+/**
+ * User management
+ */
+Route::get('password', 'User\PasswordController@change')->name('user.password.change');
+Route::put('password', 'User\PasswordController@update')->name('user.password.update');
