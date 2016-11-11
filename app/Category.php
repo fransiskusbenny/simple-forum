@@ -8,17 +8,26 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
 
-	use Sluggable;
+    use Sluggable;
 
-	protected $table = 'categories';
+    /**
+     * @var string
+     */
+    protected $table = 'categories';
 
-	protected $fillable = [
-		'name'
-	];
+    /**
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+    ];
 
-	public $timestamps = false;
+    /**
+     * @var mixed
+     */
+    public $timestamps = false;
 
-	/**
+    /**
      * Return the sluggable configuration array for this model.
      *
      * @return array
@@ -27,9 +36,17 @@ class Category extends Model
     {
         return [
             'slug' => [
-                'source' => 'name'
-            ]
+                'source' => 'name',
+            ],
         ];
+    }
+
+    /**
+     * @return mixed
+     */
+    public function topics()
+    {
+        return $this->hasMany(\App\Topic::class);
     }
 
 }

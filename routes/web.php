@@ -34,3 +34,8 @@ Route::post('comments/{topic}', 'CommentsController@store');
  */
 Route::post('liked/topics/{topic}', 'LikesController@likedTopic');
 Route::post('liked/comments/{comment}', 'LikesController@likedComment');
+
+/**
+ * Categories
+ */
+Route::resource('category', 'CategoryController');
